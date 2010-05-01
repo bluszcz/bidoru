@@ -1,0 +1,18 @@
+$def with (username,tags,form_add_tag)
+<html>
+	<head>
+		<link type="text/css" href="/s/css/smoothness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="/s/js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="/s/js/jqui/js/jquery-ui-1.8.custom.min.js"></script>
+		<script type="text/javascript" src="/s/js/jqui/js/jquery.form.js"></script>
+	</head>
+	<body>
+$username
+<ul>
+$for tag in tags
+	<li>$tag</li>
+</ul>
+$:form_add_tag.render() <button type="button" id="add_tag">Add tag</button>
+
+	</body>
+</html>

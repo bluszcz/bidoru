@@ -1,0 +1,16 @@
+application: bidoru
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+
+- url: /s
+  static_dir: statics
+
+- url: /ajax/tags/.*
+  script: tags.py
+  login: required
+
+- url: /.*
+  script: code.py
