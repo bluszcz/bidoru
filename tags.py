@@ -9,7 +9,7 @@ from forms import form_add_tag
 
 urls = (
     '/ajax/tags/get/', 'get_tags',
-    '/add/', 'add_tag',
+    '/ajax/tags/add/', 'add_tag',
     )
 
 render = web.template.render('templates')
@@ -28,7 +28,9 @@ class get_tags:
 class add_tag:
     def POST(self):
         user = users.get_current_user()
-        tag = Tag(user=user, name=tag_name)
+        object = {}
+        return simplejson.dumps(object)
+        #tag = Tag(user=user, name=tag_name)
 
 app = web.application(urls, globals())
 main = app.cgirun()
