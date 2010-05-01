@@ -28,7 +28,15 @@ class get_tags:
 class add_tag:
     def POST(self):
         user = users.get_current_user()
+        form = form_add_tag()
+        
         object = {}
+        if form.validates():
+            object['success'] = True
+            object['tag'] = form.tag
+        else:
+            object['success'] = False
+            object['error'] = form.note
         return simplejson.dumps(object)
         #tag = Tag(user=user, name=tag_name)
 
