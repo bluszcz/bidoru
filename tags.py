@@ -29,16 +29,18 @@ class add_tag:
     def POST(self):
         user = users.get_current_user()
         form = form_add_tag()
-        
         object = {}
         if form.validates():
             object['success'] = True
-            object['tag'] = form.tag
+            object['response'] = form.d.tag
+            tag = Tag(author=user,  name=form.d.tag)
+            tag.put()
+            object['message'] = 'New tag has been created'
         else:
             object['success'] = False
-            object['error'] = form.note
+            object['errors'] = form.get_errors()
+            object['message'] = 'Tag has not been created'
         return simplejson.dumps(object)
-        #tag = Tag(user=user, name=tag_name)
 
 app = web.application(urls, globals())
 main = app.cgirun()

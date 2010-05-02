@@ -1,6 +1,14 @@
 from web import form
 
-form_add_tag = form.Form(form.Textbox("tag",
+class BForm(form.Form):
+    def get_errors(self):
+        errors = {}
+        for i in self.inputs:
+            if i.note:
+                errors[i.name] = i.note
+        return errors
+
+form_add_tag = BForm(form.Textbox("tag",
         form.notnull,
         form.regexp('\w+', 'Must be alphanumeric'),
-        form.Validator('Must be longer than 2', lambda x:int(x)>2)))
+        form.Validator('Must be longer than 2', lambda x:len(x)>2)))

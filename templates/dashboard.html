@@ -13,19 +13,35 @@ $def with (username,tags,form_add_tag)
 				url:'/ajax/tags/add/',
 				dataType:'json',
 				type:'post',
-				success:function(data) {alert(data)}});
+				success:function(data) 
+				{
+					if (data['errors'] == undefined)
+					{
+						$$('<li>'+data['response']+'</li>').appendTo('#tags');
+					$$("#message").html(data['message']);
+					}
+					else
+					{
+						
+					$$("#message").html(data['message'] +' - '+data['errors']['tag']);
+					};
+					$$("form#add_tag_form").clearForm();
+					//alert(data)
+				}
+				});
 
 		}); 
 		</script>
 	</head>
 	<body>
 $username
-<ul>
+<ul id="tags">
 $for tag in tags
 	<li>$tag</li>
 </ul>
 <form id="add_tag_form">
 $:form_add_tag.render() <input type="submit" id="add_tag" value="Add tag"/>
+<div id="message"></div>
 </form>
 	</body>
 </html>
