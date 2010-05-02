@@ -33,14 +33,14 @@ $def with (username,tags,form_add_tag)
 		}); 
 		</script>
 	</head>
-	<body>
+	<body class="ui-state-default">
 $username
 <ul id="tags">
 $for tag in tags
 	<li>$tag</li>
 </ul>
 <form id="add_tag_form">
-$:form_add_tag.render() <input type="submit" id="add_tag" value="Add tag"/>
+$:form_add_tag.render() <input class="ui-state-default" type="submit" id="add_tag" value="Add tag"/>
 <div id="message"></div>
 </form>
 	</body>
