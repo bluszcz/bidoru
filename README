@@ -1,0 +1,20 @@
+ _    _    _              
+| |__(_)__| |___ _ _ _  _ 
+| '_ \ / _` / _ \ '_| || |
+|_.__/_\__,_\___/_|  \_,_| by bluszcz@bluszcz.net
+
+
+Q0x00: what bidoru is?
+ A: bidoru is a simple application to store TODO notes.
+
+Q0x01: what philoshopy is behind bidoru?
+ A: all TODO notes will be categorised by *tags*  - simple labels and 
+    additionaly by hierarchical relation (in other words - dependency) with
+    other notes
+
+Q0x02: what are requeirements to deploy bidoru?
+ A: bidoru is using Google App Engine as a deploy platform. a web interface 
+    will be acessible from any browser, which supports jQuery User Interface. 
+    a mobile client will need Nokia WRT.
+
+
