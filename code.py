@@ -21,7 +21,7 @@ class index:
             results = query.fetch(10)
             query = Tag.all()
             query.filter('author',user)
-            r = query.fetch(10)
+            r = query.run()
             tags = c = [ c.name for c in r ]
             return render.dashboard(greeting,tags, form_add_tag)
         else:

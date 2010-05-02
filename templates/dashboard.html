@@ -9,6 +9,7 @@ $def with (username,tags,form_add_tag)
 
 		<script type="text/javascript">
 		$$(document).ready( function() {
+				$$("#tabs").tabs();
 				$$("form#add_tag_form").ajaxForm({
 				url:'/ajax/tags/add/',
 				dataType:'json',
@@ -33,15 +34,26 @@ $def with (username,tags,form_add_tag)
 		}); 
 		</script>
 	</head>
-	<body class="ui-state-default">
+	<body>
 $username
-<ul id="tags">
-$for tag in tags
-	<li>$tag</li>
-</ul>
-<form id="add_tag_form">
-$:form_add_tag.render() <input class="ui-state-default" type="submit" id="add_tag" value="Add tag"/>
-<div id="message"></div>
-</form>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-notes">notes</a>
+			<li><a href="#tabs-tags">tags</a>
+		</ul>
+		<div id="tabs-notes">
+		</div>
+		<div id="tabs-tags" class="ui-widget-content">
+			<ul id="tags">
+			$for tag in tags
+				<li>$tag</li>
+			</ul>
+			<form id="add_tag_form">
+			$:form_add_tag.render() <input class="ui-state-default" type="submit" id="add_tag" value="Add tag"/>
+			<div id="message"></div>
+			</form>
+		</div>
+
+	</div>
 	</body>
 </html>

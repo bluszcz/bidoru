@@ -12,4 +12,5 @@ form_add_tag = BForm(form.Textbox("tag",
         form.notnull,
         form.regexp('\w+', 'Must be alphanumeric'),
         form.Validator('Must be longer than 2', lambda x:len(x)>2),
-        class_="ui-state-default"))
+        class_="ui-state-default",
+        description="enter new tag's name"))
