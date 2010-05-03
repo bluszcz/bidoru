@@ -1,8 +1,9 @@
-$def with (username,tags,form_add_tag)
+$def with (username,tags,form_add_tag, form_add_note)
 <html>
 	<head>
 		
 		<link type="text/css" href="/s/css/smoothness/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
+		<link type="text/css" href="/s/css/bidoru.css" rel="stylesheet" />
 		<script type="text/javascript" src="/s/js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="/s/js/jquery-ui-1.8.1.custom.min.js"></script>
 		<script type="text/javascript" src="/s/js/jquery.form.js"></script>
@@ -19,7 +20,7 @@ $def with (username,tags,form_add_tag)
 					if (data['errors'] == undefined)
 					{
 						$$('<li>'+data['response']+'</li>').appendTo('#tags');
-					$$("#message").html(data['message']);
+						$$("#message").html(data['message']);
 					}
 					else
 					{
@@ -27,21 +28,47 @@ $def with (username,tags,form_add_tag)
 					$$("#message").html(data['message'] +' - '+data['errors']['tag']);
 					};
 					$$("form#add_tag_form").clearForm();
-					//alert(data)
 				}
 				});
 
+				$$("form#add_note_form").ajaxForm({
+				url:'/ajax/notes/add/',
+				dataType:'json',
+				beforeSerialize: function() 
+				{
+					result = $$.map($$("#tag_list a.highl"), function(elem) {return elem.innerHTML}).join(',');
+					$$("#ntag_list")[0].value=result;
+					alert(result);
+				},
+
+				type:'post',
+				success:function(data) 
+				{
+					alert(data);
+				}
+				});
+
+				$$("#tag_list a").click(function() {$$(this).toggleClass('highl',50)});
+				
 		}); 
 		</script>
 	</head>
 	<body>
-$username
+  <div id="username" class="ui-widget ui-widget-content ui-corner-bottom"><p>$username</p></div>
 	<div id="tabs">
-		<ul>
+		<ul class="tabs-header">
 			<li><a href="#tabs-notes">notes</a>
 			<li><a href="#tabs-tags">tags</a>
 		</ul>
+	
+		
+
 		<div id="tabs-notes">
+			
+			<form id="add_note_form">
+			$:form_add_note.render() <button class="ui-state-default">add new note</button>
+			</form>
+			<div id="tag_list" class="ui-widget ui-widget-content ui-corner-bottom"><a>asad</a> <a>dasdadas</a> <a>dasdasdas</a></div>
 		</div>
 		<div id="tabs-tags" class="ui-widget-content">
 			<ul id="tags">

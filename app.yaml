@@ -12,5 +12,10 @@ handlers:
   script: tags.py
   login: required
 
+- url: /ajax/notes/.*
+  script: tags.py
+  login: required
+
+
 - url: /.*
   script: code.py

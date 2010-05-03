@@ -1,0 +1,43 @@
+div#username
+{
+	width: 300px;
+	font-size: 10px;
+	text-align: center;
+	float:right;
+	margin-bottom: 10px;
+}
+div#tabs 
+{
+	 clear:both;
+}
+
+div#tabs
+{
+	font-size:12px;
+}
+
+div#tag_list a
+{
+	font-size: 9px;
+	padding-left: 10px;
+	color: #cccccc;
+}
+
+div#tag_list a:hover
+{
+	font-size: 9px;
+	padding-left: 10px;
+	color: black;
+}
+div#tag_list a.highl
+{
+	font-size: 9px;
+	padding-left: 10px;
+	color: black;
+	text-decoration: underline;
+}
+
+.hidden
+{
+	display: none;
+}

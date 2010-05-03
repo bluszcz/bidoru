@@ -2,7 +2,7 @@ import web
 from google.appengine.api import users
 from google.appengine.ext import db
 from models import Tag
-from forms import form_add_tag
+from forms import form_add_tag, form_add_note
 from django.utils import simplejson
 
 urls = (
@@ -23,7 +23,7 @@ class index:
             query.filter('author',user)
             r = query.run()
             tags = c = [ c.name for c in r ]
-            return render.dashboard(greeting,tags, form_add_tag)
+            return render.dashboard(greeting,tags, form_add_tag, form_add_note)
         else:
             greeting = ("<a href=\"%s\">Sign in or register</a>." % users.create_login_url("/"))
 
