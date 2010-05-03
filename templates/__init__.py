@@ -77,8 +77,10 @@ def dashboard():
         yield '', join_('                        <form id="add_note_form">\n')
         yield '', join_('                        ', escape_(form_add_note.render(), False), ' <button class="ui-state-default">add new note</button>\n')
         yield '', join_('                        </form>\n')
-        yield '', join_('                        <div id="tag_list" class="ui-widget ui-widget-content ui-corner-bottom"><a>asad</a> <a>dasdadas</a> <a>dasdasdas</a></div>\n')
-        yield '', join_('                </div>\n')
+        yield '', join_('                        <div id="tag_list" class="ui-widget ui-widget-content ui-corner-bottom">\n')
+        for tag in loop.setup(tags):
+            yield '', join_('                        ', '    <a>', escape_(tag, True), '</a>\n')
+        yield '', join_('                        </div>\n')
         yield '', join_('                <div id="tabs-tags" class="ui-widget-content">\n')
         yield '', join_('                        <ul id="tags">\n')
         for tag in loop.setup(tags):

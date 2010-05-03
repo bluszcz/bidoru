@@ -68,8 +68,10 @@ $def with (username,tags,form_add_tag, form_add_note)
 			<form id="add_note_form">
 			$:form_add_note.render() <button class="ui-state-default">add new note</button>
 			</form>
-			<div id="tag_list" class="ui-widget ui-widget-content ui-corner-bottom"><a>asad</a> <a>dasdadas</a> <a>dasdasdas</a></div>
-		</div>
+			<div id="tag_list" class="ui-widget ui-widget-content ui-corner-bottom">
+			$for tag in tags
+				<a>$tag</a>
+			</div>
 		<div id="tabs-tags" class="ui-widget-content">
 			<ul id="tags">
 			$for tag in tags
